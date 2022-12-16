@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 function App() {
 
   
-let baseUrl = ``;
+let baseUrl = `https://bewildered-wasp-necklace.cyclic.app`;
 if (window.location.href.split(":")[0] === "http") {
     baseUrl = `http://localhost`;
 }
