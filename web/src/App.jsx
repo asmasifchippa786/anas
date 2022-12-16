@@ -10,7 +10,7 @@ function App() {
   
 let baseUrl = ``;
 if (window.location.href.split(":")[0] === "http") {
-    baseUrl = `http://localhost:5001`;
+    baseUrl = `http://localhost`;
 }
 
   const [products, setProducts] = useState([])
@@ -33,7 +33,7 @@ if (window.location.href.split(":")[0] === "http") {
 
   const deleteProduct = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:5001/product/${id}`)
+      const response = await axios.delete(`${baseUrl}/product/${id}`)
       console.log("response: ", response.data);
 
       setLoadProduct(!loadProduct)
@@ -88,7 +88,7 @@ if (window.location.href.split(":")[0] === "http") {
     onSubmit: (values) => {
       console.log("values: ", values);
 
-      axios.post(`http://localhost:5001/product`, {
+      axios.post(`${baseUrl}/product`, {
         name: values.productName,
         price: values.productPrice,
         description: values.productDescription,
@@ -131,7 +131,7 @@ if (window.location.href.split(":")[0] === "http") {
     onSubmit: (values) => {
       console.log("values: ", values);
 
-      axios.put(`http://localhost:5001/product/${editingProduct.id}`, {
+      axios.put(`${baseUrl}/product/${editingProduct.id}`, {
         name: values.productName,
         price: values.productPrice,
         description: values.productDescription,
