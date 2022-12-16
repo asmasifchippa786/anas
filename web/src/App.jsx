@@ -7,6 +7,12 @@ import { useEffect, useState } from 'react';
 
 function App() {
 
+  
+let baseUrl = ``;
+if (window.location.href.split(":")[0] === "http") {
+    baseUrl = `http://localhost:5001`;
+}
+
   const [products, setProducts] = useState([])
   const [loadProduct, setLoadProduct] = useState(false)
   const [isEditMode, setIsEditMode] = useState(false)
@@ -15,7 +21,7 @@ function App() {
 
   const getAllProducts = async () => {
     try {
-      const response = await axios.get(`http://localhost:5001/products`)
+      const response = await axios.get(`${baseUrl}/products`)
       console.log("response: ", response.data);
 
       setProducts(response.data.data)
